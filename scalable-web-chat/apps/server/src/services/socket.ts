@@ -1,4 +1,24 @@
 import { Server } from "socket.io";
+import  Redis  from "ioredis";
+
+const pub = new Redis({
+  host: "redis-138ccac8-shivamkumarraut12-56a2.a.aivencloud.com",
+  port: 22748,
+  username: "default",
+  password: "AVNS_90MWSlc03om7aBXii1Z",
+});
+pub.on('error', (err) => {
+    console.error('Redis Publisher Error:', err);
+});
+const sub = new Redis({
+    host: "redis-138ccac8-shivamkumarraut12-56a2.a.aivencloud.com",
+    port: 22748,
+    username: "default",
+    password: "AVNS_90MWSlc03om7aBXii1Z",
+});
+sub.on('error', (err) => {
+    console.error('Redis Subscriber Error:', err);
+});
 
 class SocketService{
     private _io: Server;
@@ -9,8 +29,9 @@ class SocketService{
             cors:{
                 allowedHeaders: ['*'],
                 origin: "*"
-            }
+            },
         });
+        sub.subscribe('MESSAGES')
     }
 
     public initListeners(){
@@ -20,8 +41,23 @@ class SocketService{
             console.log(`New Socket connected `, socket.id);
 
             socket.on('event:message', async ({message}: {message: string})=>{
-                console.log(`New message Rec. `, message);
+                console.log(`New message Recevied. `, message);
+                // Publish msg to redis
+                await pub.publish('MESSAGES', JSON.stringify({ message }), (err, reply) => {
+                    if (err) {
+                        console.error('Error publishing message to Redis:', err);
+                    } else {
+                        console.log('Message published to Redis. Reply:', reply);
+                    }
+                });
+                
             })
+        })
+        sub.on('message',(channel, message)=>{
+            if(channel === 'MESSAGES'){
+                console.log("New message from redis ", message)
+                io.emit("message", message);
+            }
         })
     }
 
