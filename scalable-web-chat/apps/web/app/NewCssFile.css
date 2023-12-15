@@ -1,0 +1,87 @@
+/* Styles for the chat container */
+.chat-container {
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 50px;
+    /* border: 1px solid #ccc; */
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Click animation only for the send button */
+  .send-button:active {
+    transform: scale(1.1); /* Scale the send button on click */
+    
+  }
+  
+  /* Rest of the styles remain the same */
+  .message-display {
+    height: 357px; /* Set a max height instead of height */
+    padding: 10px;
+    padding-left: 14px;
+    border-radius: 5px;
+    margin: 0 2% 0 2%;
+    overflow-y: auto;
+    background-color: rgba(64, 224, 208, 1);
+    color: rgba(0, 0, 0, 1);
+    scroll-behavior: smooth; /* Enable smooth scrolling */
+    box-sizing: border-box; /* Include padding in the height calculation */
+  }
+  
+  .message {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  /* Assuming the parent container is message-input-container */
+  .message-input-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .message-input {
+    flex: 1; /* Take the remaining space */
+    width: calc(100% - 20%);
+    padding: 10px;
+    padding-right: 0%;
+    margin: 10px;
+    margin-right: 0%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  
+  .send-button {
+    width: calc(20%);
+    padding: 10px;
+    margin: 10px;
+    margin-left: 1%;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0);
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  
+  /* Responsive styles */
+  @media screen and (max-width: 600px) {
+    .chat-container {
+      width: 100%;
+      margin-top: 20px;
+    }
+  
+    .message-input{
+      width: calc(100% - 20px);
+    }
+    .send-button {
+      width: calc(20%);
+    }
+  }
+  
