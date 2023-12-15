@@ -51,17 +51,19 @@ export default function Page() {
           {/* <!-- Messages will be displayed here --> */}
           {messages.map((e, key) => <li key={key}>{e}</li>)}
         </div>
+        <div className={classes["message-input-container"]}>
+          <input
+            type="text"
+            value={message}
+            ref={inputRef}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className={classes["message-input"]}
+            placeholder="Type your message..." />
 
-        <input
-          type="text"
-          value={message}
-          ref={inputRef}
-          onChange={(e) => setMessage(e.target.value)}
-          onKeyDown={handleKeyDown}
-          className={classes["message-input"]}
-          placeholder="Type your message..." />
+          <button onClick={addMessage} type="submit" className={classes["send-button"]}>Send</button>
+        </div>
 
-        <button onClick={addMessage} type="submit" className={classes["send-button"]}>Send</button>
 
       </div>
     </>
