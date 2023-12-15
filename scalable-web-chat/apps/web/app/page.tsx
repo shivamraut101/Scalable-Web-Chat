@@ -1,5 +1,5 @@
 'use client'
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, KeyboardEvent } from "react";
 import { useSocket } from "../context/SocketProvider"
 import classes from "./page.module.css"
 export default function Page() {
@@ -18,6 +18,15 @@ export default function Page() {
       const scrollHeight = messageDisplayRef.current.scrollHeight;
       const clientHeight = messageDisplayRef.current.clientHeight;
       messageDisplayRef.current.scrollTop = scrollHeight - clientHeight;
+    }
+  };
+
+  // Function to handle key presses in the input field
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    // Check if the key pressed is Enter (key code 13)
+    if (event.key === 'Enter') {
+      // Call the function to send the message (replace with your actual send message logic)
+      addMessage();
     }
   };
 
@@ -48,6 +57,7 @@ export default function Page() {
           value={message}
           ref={inputRef}
           onChange={(e) => setMessage(e.target.value)}
+          onKeyDown={handleKeyDown}
           className={classes["message-input"]}
           placeholder="Type your message..." />
 
