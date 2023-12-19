@@ -24,6 +24,7 @@
     border-radius: 5px;
     margin: 0 2% 0 2%;
     overflow-y: auto;
+    word-wrap: break-word;
     background-color: rgba(64, 224, 208, 1);
     color: rgba(0, 0, 0, 1);
     scroll-behavior: smooth; /* Enable smooth scrolling */

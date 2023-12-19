@@ -20,6 +20,7 @@
   height: 300px; /* Set a max height instead of height */
   padding: 10px;
   overflow-y: auto;
+  word-wrap: break-word;
   background-color: #f0f0f0;
   color: black;
   scroll-behavior: smooth; /* Enable smooth scrolling */
