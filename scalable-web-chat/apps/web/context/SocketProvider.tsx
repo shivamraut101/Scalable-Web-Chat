@@ -46,17 +46,17 @@ interface ISocketContext {
 
     useEffect(()=>{
         const _socket = io("http://192.168.1.2:8000");
-        const __socket = io("https://mint-parrot-namely.ngrok-free.app:8000");
+        // const __socket = io("https://mint-parrot-namely.ngrok-free.app:8000");
         _socket.on('message', onMessageRec);
-        __socket.on('message', onMessageRec);
+        // __socket.on('message', onMessageRec);
         setSocket(_socket);
-        setSocketNg(__socket);
+        // setSocketNg(__socket);
 
         return ()=>{
             _socket.disconnect();
-            __socket.disconnect();
+            // __socket.disconnect();
             _socket.off('message', onMessageRec);
-            __socket.off('message', onMessageRec);
+            // __socket.off('message', onMessageRec);
             setSocket(undefined);
             setSocketNg(undefined);
         };
