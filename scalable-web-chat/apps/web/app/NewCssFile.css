@@ -85,4 +85,84 @@
       width: calc(20%);
     }
   }
+
+  /* Old Css */
+
+  /* Styles for the chat container */
+.chat-container {
+  width: 90%;
+  max-width: 500px;
+  margin: auto;
+  margin-top: 50px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Click animation only for the send button */
+.send-button:active {
+  transform: scale(1.1); /* Scale the send button on click */
+}
+
+/* Rest of the styles remain the same */
+.message-display {
+  height: 300px; /* Set a max height instead of height */
+  padding: 10px;
+  overflow-y: auto;
+  word-wrap: break-word;
+  background-color: #f0f0f0;
+  color: black;
+  scroll-behavior: smooth; /* Enable smooth scrolling */
+  box-sizing: border-box; /* Include padding in the height calculation */
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.message-input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px; /* Increase the font size */
+}
+
+.send-button {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px; /* Increase the font size */
+}
+
+.send-button:hover {
+  background-color: #45a049;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .chat-container {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .message-input,
+  .send-button {
+    width: calc(100% - 20px);
+  }
+}
+
+
+
   
