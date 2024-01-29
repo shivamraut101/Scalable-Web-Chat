@@ -11,7 +11,7 @@ interface ISocketContext {
     messages: string[];
   }
 
-  const SocketContext = React.createContext<ISocketContext | null>(null);
+  const SocketContext = React.createContext<ISocketContext | null>(null); 
   
 
   export const useSocket = () => {
